@@ -1,0 +1,261 @@
+* {
+  font-family: ui-sans-serif, "Segoe UI", Helvetica, "Apple Color Emoji", Arial,
+    sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(55, 53, 47, 0.08);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(55, 53, 47, 0.16);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(55, 53, 47, 0.32);
+}
+
+body {
+  margin: 0px;
+}
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: rgb(247, 246, 243);
+  min-width: 313px;
+  width: 313px;
+  height: 100vh;
+}
+
+.sidebar-header {
+  box-sizing: border-box;
+  padding: 22px;
+  font-size: 20px;
+  width: inherit;
+  height: 70px;
+  color: rgba(55, 53, 47, 0.7);
+}
+
+.sidebar-footer {
+  box-sizing: border-box;
+  display: flex;
+  color: rgba(55, 53, 47, 0.7);
+  border-top: 0.5px solid rgba(55, 53, 47, 0.08);
+  min-height: 45px;
+  height: 45px;
+  margin-top: auto;
+  padding: 12px;
+  cursor: pointer;
+}
+.sidebar-footer:hover {
+  border-top: 0.5px solid rgba(55, 53, 47, 0);
+  background-color: rgba(55, 53, 47, 0.08);
+}
+
+.document-list {
+  padding-top: 14px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  width: inherit;
+  overflow-y: auto;
+}
+
+.document-list-title-container {
+  box-sizing: border-box;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+}
+.document-title {
+  overflow: hidden;
+  font-size: 15px;
+  width: 210px;
+  max-width: 210px;
+}
+ul.document-tree-list {
+  padding-inline-start: 5px;
+}
+.document-tree-list ul {
+  padding-inline-start: 20px;
+}
+.document-tree-item {
+  display: flex;
+  flex-direction: row;
+  max-height: 21.6px;
+  overflow-y: hidden;
+  cursor: pointer;
+  padding: 5px 0px 2px 0px;
+  color: rgba(55, 53, 47, 0.7);
+}
+.document-tree-item > button {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  display: none;
+  margin: 0px 1px 0px 1px;
+  color: rgba(55, 53, 47, 0.45);
+  background-color: rgba(55, 53, 47, 0.08);
+  border: solid rgba(55, 53, 47, 0.16) 1px;
+  border-radius: 2px;
+  height: 20px;
+  width: 20px;
+}
+.document-tree-item[data-selected="true"] {
+  background-color: rgba(55, 53, 47, 0.08);
+  color: black;
+  font-weight: 600;
+}
+.document-tree-item[data-selected="true"]:hover {
+  background-color: rgba(55, 53, 47, 0.16);
+}
+.document-tree-item .append-button {
+  position: absolute;
+  right: 4px;
+}
+.document-tree-item .remove-button {
+  position: absolute;
+  right: 27px;
+}
+.document-tree-item:hover {
+  background-color: rgba(55, 53, 47, 0.08);
+}
+.document-tree-item:hover > button {
+  cursor: pointer;
+  display: block;
+}
+.document-tree-item:hover > button:hover {
+  background-color: rgba(55, 53, 47, 0.16);
+}
+.make-new-document {
+  display: flex;
+  padding-left: 10px;
+  flex-direction: row;
+  width: 100%;
+}
+
+.page-container {
+  margin: auto;
+  margin-top: 100px;
+  width: 60%;
+  box-sizing: border-box;
+}
+.main-page {
+  padding: 50px;
+  color: rgba(55, 53, 47, 0.7);
+}
+.document-edit-page {
+  margin: auto;
+}
+
+.document-editor {
+  display: flex;
+  flex-direction: column;
+}
+
+.document-editor [contenteditable="true"] {
+  width: 100%;
+  padding: 10px;
+}
+
+.document-editor [contenteditable="true"]:empty:before {
+  content: attr(placeholder);
+  color: rgba(55, 53, 47, 0.24);
+  display: block; /* For Firefox */
+}
+
+.document-editor [name="title"] {
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 750;
+  border: none;
+}
+.document-editor [name="content"] {
+  font-size: 16px;
+  height: fit-content;
+  resize: none;
+  border: none;
+  font-family: "NanumSquareR";
+}
+
+.document-editor :focus {
+  outline: none;
+}
+.modal-overlay {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal-window {
+  box-sizing: border-box;
+  display: none;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 3px;
+  position: fixed;
+  margin: auto;
+  width: 70vw;
+  height: 80vh;
+  top: 10vh;
+  left: 15vw;
+  overflow-y: auto;
+}
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  height: 30px;
+}
+
+.modal-header > .on-page-button {
+  color: rgba(55, 53, 47, 0.7);
+  border-radius: 3px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+.modal-header > .on-page-button:hover {
+  background-color: rgba(55, 53, 47, 0.08);
+}
+
+.modal-window > .document-editor {
+  padding: 30px 120px;
+}
+
+.document-link-container {
+  width: 100%;
+}
+
+.document-link > svg {
+  margin: 0px 8px;
+}
+
+.document-link {
+  width: 100%;
+  height: 20px;
+  border-radius: 1px;
+  padding: 5px 3px;
+  margin: 1px 0px;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  color: rgba(55, 53, 47, 0.9);
+}
+
+.document-link:hover {
+  background-color: rgba(55, 53, 47, 0.08);
+}
